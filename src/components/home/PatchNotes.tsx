@@ -11,39 +11,30 @@ interface PatchNote {
 }
 
 const patchNotes: PatchNote[] = [
-  // {
-  //   version: SERVER_CONFIG.serverVersion,
-  //   date: "Sep 9, 2025",
-  //   changes: [
-  //     "Added Christmas event with exclusive rewards",
-  //     "Fixed critical PvP desync issue",
-  //     "Balanced Mage fire spells damage",
-  //     "Added 3 new holiday pets"
-  //   ],
-  //   type: "major"
-  // },
-  // {
-  //   version: "v2.1.7",
-  //   date: "Sep 9, 2025", 
-  //   changes: [
-  //     "Server stability improvements",
-  //     "Fixed item duplication exploit",
-  //     "Adjusted Borg skill cooldowns",
-  //     "Enhanced server monitoring"
-  //   ],
-  //   type: "hotfix"
-  // },
-  // {
-  //   version: "v2.1.6",
-  //   date: "Sep 9, 2025",
-  //   changes: [
-  //     "Guild War Tournament system implemented",
-  //     "New Crystal Fields map added",
-  //     "Pet evolution system released",
-  //     "Enhanced PvP ranking rewards"
-  //   ],
-  //   type: "major"
-  // }
+  {
+    version: SERVER_CONFIG.serverVersion,
+    date: "Sep 9, 2025",
+    changes: [
+      "",
+    ],
+    type: "major"
+  },
+  {
+    version: "v2.1.7",
+    date: "Sep 9, 2025", 
+    changes: [
+      "",
+    ],
+    type: "hotfix"
+  },
+  {
+    version: "v2.1.6",
+    date: "Sep 9, 2025",
+    changes: [
+      "",
+    ],
+    type: "major"
+  }
 ];
 
 export const PatchNotes: React.FC = () => {

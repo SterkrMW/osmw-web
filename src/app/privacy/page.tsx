@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-lg font-bold text-cyan-300 mb-3">1. Information We Collect</h2>
               <p className="mb-3">
-                {SERVER_CONFIG.name} ("{SERVER_CONFIG.shortName}") collects minimal information necessary to operate the game server and provide our services.
+                {SERVER_CONFIG.name} (&quot;{SERVER_CONFIG.shortName}&quot;) collects minimal information necessary to operate the game server and provide our services.
               </p>
               
               <h3 className="font-semibold text-cyan-400 mb-2">Account Information:</h3>
@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-cyan-300 mb-3">8. Children's Privacy</h2>
+              <h2 className="text-lg font-bold text-cyan-300 mb-3">8. Children&apos;s Privacy</h2>
               <p className="mb-3">
                 Our services are restricted to adults only. <strong className="text-red-400">We require all users to be at least 18 years of age.</strong> We do not knowingly collect personal information from minors under 18 years of age.
               </p>

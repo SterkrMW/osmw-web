@@ -92,7 +92,7 @@ export default function LoginPage() {
 
               <div className="mt-6 pt-4 border-t border-cyan-500/20 text-center">
                 <p className="text-cyan-100/70 text-sm mb-3">
-                  Don't have an account yet?
+                  Don&apos;t have an account yet?
                 </p>
                 <Link href="/register">
                   <GradientButton variant="secondary" fullWidth>

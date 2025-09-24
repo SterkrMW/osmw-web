@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { GlassCard, GradientButton, FormField, FormInput, BackToHomepage, PageContainer } from '@/components/ui';
 import { validatePassword, validateEmail, validateUsername } from '@/lib/validation';
 
@@ -18,7 +17,6 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const router = useRouter();
 
 
   const handleSubmit = async (e: React.FormEvent) => {

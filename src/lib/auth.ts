@@ -3,6 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { getUserCollection } from '@/lib/gameDatabase';
 import bcrypt from 'bcryptjs';
 import { databaseConfig } from '@/config/database';
+import crypto from 'crypto';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -29,7 +30,6 @@ export const authOptions: NextAuthOptions = {
           }
 
           // Validate password using the same method as user creation
-          const crypto = require('crypto');
           const md5Password = crypto.createHash('md5').update(credentials.password).digest('hex');
           const processedPassword = md5Password.toLowerCase() + databaseConfig.security.globalSalt;
           const isValidPassword = await bcrypt.compare(processedPassword, user.password);
@@ -42,9 +42,9 @@ export const authOptions: NextAuthOptions = {
             id: user._id.toString(),
             username: user.username,
             email: user.email,
-            characterName: user.characterName || null,
-            race: user.race || null,
-            gender: user.gender || null,
+            characterName: user.characterName,
+            race: user.race,
+            gender: user.gender,
             level: user.level || 1
           };
         } catch (error) {

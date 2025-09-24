@@ -75,15 +75,6 @@ export default function GuidesPage() {
     ? guides 
     : guides.filter(guide => guide.category === selectedCategory);
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Easy': return 'text-green-400';
-      case 'Medium': return 'text-cyan-400';
-      case 'Hard': return 'text-red-400';
-      default: return 'text-gray-400';
-    }
-  };
-
   return (
     <PageContainer>
       <div className="space-y-8">

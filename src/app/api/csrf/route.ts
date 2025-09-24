@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { CSRFProtection } from '@/lib/csrf';
 
 // GET endpoint to provide CSRF token to clients
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const token = CSRFProtection.generateToken();
     

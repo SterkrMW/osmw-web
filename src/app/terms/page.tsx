@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
             
             <section>
               <h2 className="text-lg font-bold text-cyan-300 mb-3">1. Acceptance of Terms</h2>
-              <p className="mb-3">By accessing and playing on {SERVER_CONFIG.name} ("{SERVER_CONFIG.shortName}"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+              <p className="mb-3">By accessing and playing on {SERVER_CONFIG.name} (&quot;{SERVER_CONFIG.shortName}&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
               <p><strong className="text-red-400">Age Requirement:</strong> You must be at least 18 years of age to register and play on this server. We do not knowingly accept registrations from minors under 18 years of age.</p>
             </section>
 
@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
                 <li>Engage in harassment, abuse, or discriminatory behavior</li>
                 <li>Share accounts or engage in real money trading</li>
                 <li>Spam, advertise, or solicit other players</li>
-                <li>Attempt to disrupt server operations or other players' gameplay</li>
+                <li>Attempt to disrupt server operations or other players&apos; gameplay</li>
                 <li>Use offensive language or inappropriate character/guild names</li>
               </ul>
             </section>
@@ -95,7 +95,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-lg font-bold text-cyan-300 mb-3">9. Limitation of Liability</h2>
               <p className="mb-3">
-                {SERVER_CONFIG.shortName} is provided "as is" without warranties. We are not liable for any damages arising from your use of our services.
+                {SERVER_CONFIG.shortName} is provided &quot;as is&quot; without warranties. We are not liable for any damages arising from your use of our services.
               </p>
               <p>
                 The server operators assume no responsibility for any harm to your computer, loss of data, or other damages resulting from your use of our services.

@@ -14,7 +14,7 @@ export default function DownloadPage() {
           <GlassCard title="⬇️ Client Download">
             <InteractiveRow variant="bordered">
               <h3 className="text-cyan-100 font-semibold text-lg mb-2 flex items-center gap-2">🎮 Client Requirements</h3>
-              <p className="text-cyan-100/70 text-sm mb-3">You'll need the official Myth War client to connect to our server.</p>
+              <p className="text-cyan-100/70 text-sm mb-3">You&apos;ll need the official Myth War client to connect to our server.</p>
               <div className="flex items-center justify-between">
                 <div className="text-sm text-cyan-300/60 space-y-1">
                   <div>🔄 Required Version: {SERVER_CONFIG.clientVersion}</div>
@@ -34,11 +34,11 @@ export default function DownloadPage() {
             <div className="space-y-4">
               <div className="border-l-4 border-lime-400/60 pl-4 bg-lime-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-lime-300 mb-2">Step 1: Get the Official Client</h3>
-                <p className="text-cyan-100/70 text-sm">You'll need the official Myth War client version {SERVER_CONFIG.clientVersion} to connect to our server.</p>
+                <p className="text-cyan-100/70 text-sm">You&apos;ll need the official Myth War client version {SERVER_CONFIG.clientVersion} to connect to our server.</p>
               </div>
               <div className="border-l-4 border-cyan-400/60 pl-4 bg-cyan-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-cyan-300 mb-2">Step 2: Join Our Discord</h3>
-                <p className="text-cyan-100/70 text-sm">Click "Join Discord" above to get download links and the required patch.</p>
+                <p className="text-cyan-100/70 text-sm">Click &quot;Join Discord&quot; above to get download links and the required patch.</p>
               </div>
               <div className="border-l-4 border-teal-400/60 pl-4 bg-teal-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-teal-300 mb-2">Step 3: Apply the Patch</h3>
@@ -47,7 +47,7 @@ export default function DownloadPage() {
               <div className="border-l-4 border-emerald-400/60 pl-4 bg-emerald-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-emerald-300 mb-2">Step 4: Create Account</h3>
                 <p className="text-cyan-100/70 text-sm">
-                  If you don't have an account yet, 
+                  If you don&apos;t have an account yet, 
                   <Link href="/register" className="text-cyan-300 hover:text-cyan-200 ml-1 font-medium">click here to register</Link>.
                 </p>
               </div>
