@@ -27,7 +27,7 @@ export const Navbar: React.FC = () => {
             <Link href="/download" className="px-4 py-2 text-cyan-100/90 hover:text-cyan-50 hover:bg-slate-700/50 rounded-xl text-sm font-semibold transition-all duration-300">
               Download
             </Link>
-            <Link href="/guides" className="px-4 py-2 text-cyan-100/90 hover:text-cyan-50 hover:bg-slate-700/50 rounded-xl text-sm font-semibold transition-all duration-300">
+            <Link href="/guides" className="px-4 py-2 text-cyan-100/40 rounded-xl text-sm font-semibold transition-all duration-300 pointer-events-none opacity-50">
               Guides
             </Link>
             <Link href="/rankings" className="px-4 py-2 text-cyan-100/40 rounded-xl text-sm font-semibold transition-all duration-300 pointer-events-none opacity-50">
