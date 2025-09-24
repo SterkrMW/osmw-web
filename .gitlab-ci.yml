@@ -1,0 +1,44 @@
+stages:
+  - build-and-deploy
+
+variables:
+  DOCKER_HOST: unix:///var/run/docker.sock
+  IMAGE_NAME: "osmw-website"
+  CONTAINER_NAME: "osmw-website"
+
+build-and-deploy:
+  stage: build-and-deploy
+  image: docker:latest
+  tags:
+    - production
+  script:
+    - echo "Building Docker image locally..."
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHA .
+    - echo "Deploying to production..."
+    # Stop and remove existing container if it exists
+    - docker stop $CONTAINER_NAME || true
+    - docker rm $CONTAINER_NAME || true
+    # Run new container from local image
+    # Check for production env file, fallback to example
+    - |
+      if [ -f ".env.production" ]; then
+        echo "Using .env.production"
+        ENV_FILE=".env.production"
+      else
+        echo "Using .env.example as fallback"
+        ENV_FILE=".env.example"
+      fi
+    - docker run -d 
+      --name $CONTAINER_NAME 
+      --restart unless-stopped 
+      -p 5001:5001 
+      --env-file $ENV_FILE 
+      $IMAGE_NAME:$CI_COMMIT_SHA
+    # Clean up old local images (keep last 3)
+    - docker images $IMAGE_NAME --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | tail -n +2 | head -n -3 | awk '{print $3}' | xargs -r docker rmi || true
+    - echo "✅ Deployment complete! Application available at http://localhost:5001"
+  environment:
+    name: production
+    url: http://localhost:5001
+  only:
+    - main
