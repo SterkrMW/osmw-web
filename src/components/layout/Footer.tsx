@@ -41,10 +41,10 @@ export const Footer: React.FC = () => {
               <Link href="/register" className="block text-cyan-100/90 hover:text-cyan-50 text-sm transition-colors">
                 Create Account
               </Link>
-              <Link href="/guides" className="block text-cyan-100/90 hover:text-cyan-50 text-sm transition-colors">
+              <Link href="/guides" className="block text-cyan-100/40 text-sm transition-colors pointer-events-none opacity-50">
                 Game Guides
               </Link>
-              <Link href="/rankings" className="block text-cyan-100/90 hover:text-cyan-50 text-sm transition-colors">
+              <Link href="/rankings" className="block text-cyan-100/40 text-sm transition-colors pointer-events-none opacity-50">
                 Player Rankings
               </Link>
             </div>

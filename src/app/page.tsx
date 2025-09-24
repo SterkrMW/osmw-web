@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <PageContainer>
       <div className="space-y-8">
-        {/* Feature Highlights - Top Banner */}
-        <FeatureHighlights />
-        
         {/* News Section - Full Width */}
         <NewsSection />
+
+        {/* Feature Highlights - Top Banner */}
+        <FeatureHighlights />
         
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">

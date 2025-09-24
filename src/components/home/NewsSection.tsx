@@ -13,7 +13,7 @@ const newsData: NewsItem[] = [
   {
     date: "Sep 24, 2025",
     title: "Beta Begins!",
-    content: "The beta begins! Join our Discord server to get the latest updates and download the client.",
+    content: "The beta begins! Head to the Download page to get started. Make sure to check out the Discord server for extra help!",
     tag: "Update"
   },
   // {

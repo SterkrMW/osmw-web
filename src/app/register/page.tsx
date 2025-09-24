@@ -117,9 +117,9 @@ export default function RegisterPage() {
                 You can now log in with your new account credentials.
               </p>
               <div className="space-y-3">
-                <Link href="/login">
+                <Link href="/download">
                   <GradientButton variant="primary" fullWidth size="lg">
-                    Go to Login
+                    Go to Download
                   </GradientButton>
                 </Link>
                 <Link href="/">
