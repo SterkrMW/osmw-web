@@ -11,7 +11,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "How do I create an account?",
-    answer: "Click the Register button in the top-right corner, fill out the form with your desired username, email, and password. You'll receive a confirmation email to activate your account.",
+    answer: "Click the Register button in the top-right corner, fill out the form with your desired username, email, and password.",
     category: "getting-started"
   },
   {

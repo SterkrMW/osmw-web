@@ -14,11 +14,11 @@ export default function DownloadPage() {
           <GlassCard title="⬇️ Client Download">
             <InteractiveRow variant="bordered">
               <h3 className="text-cyan-100 font-semibold text-lg mb-2 flex items-center gap-2">🎮 Client Requirements</h3>
-              <p className="text-cyan-100/70 text-sm mb-3">You&apos;ll need the official Myth War client to connect to our server.</p>
+              <p className="text-cyan-100/70 text-sm mb-3">You&apos;ll need the official Myth War client to connect to our server. The best place to start is our Discord server.</p>
               <div className="flex items-center justify-between">
                 <div className="text-sm text-cyan-300/60 space-y-1">
                   <div>🔄 Required Version: {SERVER_CONFIG.clientVersion}</div>
-                  <div>📋 Additional patch required</div>
+                  <div>📋 Optional patch available</div>
                 </div>
                 <a href={DISCORD_INVITE_URL} target="_blank" rel="noopener noreferrer">
                   <GradientButton variant="primary">
@@ -38,17 +38,39 @@ export default function DownloadPage() {
               </div>
               <div className="border-l-4 border-cyan-400/60 pl-4 bg-cyan-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-cyan-300 mb-2">Step 2: Join Our Discord</h3>
-                <p className="text-cyan-100/70 text-sm">Click &quot;Join Discord&quot; above to get download links and the required patch.</p>
+                <p className="text-cyan-100/70 text-sm">
+                  <a 
+                    href="https://www.mediafire.com/file_premium/dyf5um81mnq6k5y/Door.DAT/file" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-cyan-300 hover:text-cyan-200 font-medium underline"
+                  >
+                    Download the Door.Dat
+                  </a>
+                </p>
               </div>
               <div className="border-l-4 border-teal-400/60 pl-4 bg-teal-900/10 rounded-r-lg p-3">
-                <h3 className="font-semibold text-teal-300 mb-2">Step 3: Apply the Patch</h3>
-                <p className="text-cyan-100/70 text-sm">Install the required server patch provided in Discord before connecting.</p>
+                <h3 className="font-semibold text-teal-300 mb-2">Step 3: Install the Door.Dat</h3>
+                <p className="text-cyan-100/70 text-sm">Drag and drop the Door.Dat file into your Myth War client installation .folder.</p>
               </div>
               <div className="border-l-4 border-emerald-400/60 pl-4 bg-emerald-900/10 rounded-r-lg p-3">
                 <h3 className="font-semibold text-emerald-300 mb-2">Step 4: Create Account</h3>
                 <p className="text-cyan-100/70 text-sm">
                   If you don&apos;t have an account yet, 
                   <Link href="/register" className="text-cyan-300 hover:text-cyan-200 ml-1 font-medium">click here to register</Link>.
+                </p>
+              </div>
+              <div className="border-l-4 border-emerald-400/60 pl-4 bg-emerald-900/10 rounded-r-lg p-3">
+                <h3 className="font-semibold text-emerald-300 mb-2">Step 5: Optionally, Download and Apply the Patch</h3>
+                <p className="text-cyan-100/70 text-sm">
+                  <a 
+                    href="https://www.mediafire.com/file_premium/hju84oiox9tcb3r/patch.zip/file" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-cyan-300 hover:text-cyan-200 font-medium underline"
+                  >
+                    Download the patch.zip
+                  </a> and extract it to your Myth War client installation folder. Drag and drop the main.exe onto the apply-batch.bat file.
                 </p>
               </div>
             </div>
