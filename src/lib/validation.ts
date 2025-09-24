@@ -13,8 +13,8 @@ export function validatePassword(password: string): PasswordValidationResult {
   }
 
   // Maximum length check (prevent DoS attacks)
-  if (password.length > 128) {
-    errors.push('Password must be less than 128 characters');
+  if (password.length > 15) {
+    errors.push('Password must be less than 15 characters');
   }
 
   // Alphanumeric only check (game client requirement)
