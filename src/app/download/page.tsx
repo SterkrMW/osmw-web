@@ -37,7 +37,7 @@ export default function DownloadPage() {
                 <p className="text-cyan-100/70 text-sm">You&apos;ll need the official Myth War client version {SERVER_CONFIG.clientVersion} to connect to our server.</p>
               </div>
               <div className="border-l-4 border-cyan-400/60 pl-4 bg-cyan-900/10 rounded-r-lg p-3">
-                <h3 className="font-semibold text-cyan-300 mb-2">Step 2: Join Our Discord</h3>
+                <h3 className="font-semibold text-cyan-300 mb-2">Step 2: Download the Door.Dat</h3>
                 <p className="text-cyan-100/70 text-sm">
                   <a 
                     href="https://www.mediafire.com/file_premium/dyf5um81mnq6k5y/Door.DAT/file" 

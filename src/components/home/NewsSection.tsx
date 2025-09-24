@@ -10,12 +10,12 @@ interface NewsItem {
 }
 
 const newsData: NewsItem[] = [
-  // {
-  //   date: "Sep 9, 2025",
-  //   title: "🎄 Christmas Event Now Live!",
-  //   content: "Join our special Christmas event with exclusive rewards, double EXP weekends, and limited-time pets! New winter-themed maps and bosses await.",
-  //   tag: "Event"
-  // },
+  {
+    date: "Sep 24, 2025",
+    title: "Beta Begins!",
+    content: "The beta begins! Join our Discord server to get the latest updates and download the client.",
+    tag: "Update"
+  },
   // {
   //   date: "Sep 9, 2025", 
   //   title: "🔧 Server Maintenance Complete",

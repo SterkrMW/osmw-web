@@ -23,23 +23,7 @@ export const Footer: React.FC = () => {
                   <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
                   <div className="absolute inset-0 w-2 h-2 bg-lime-300 rounded-full animate-ping opacity-20"></div>
                 </div>
-                <span className="text-cyan-100 text-sm font-medium">Phoenix 1</span>
-                <span className="text-lime-400 text-xs font-bold ml-auto">ONLINE</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="relative">
-                  <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-2 h-2 bg-lime-300 rounded-full animate-ping opacity-20"></div>
-                </div>
-                <span className="text-cyan-100 text-sm font-medium">Phoenix 2</span>
-                <span className="text-lime-400 text-xs font-bold ml-auto">ONLINE</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="relative">
-                  <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-2 h-2 bg-lime-300 rounded-full animate-ping opacity-20"></div>
-                </div>
-                <span className="text-cyan-100 text-sm font-medium">Phoenix 3</span>
+                <span className="text-cyan-100 text-sm font-medium">Behemoth</span>
                 <span className="text-lime-400 text-xs font-bold ml-auto">ONLINE</span>
               </div>
             </div>

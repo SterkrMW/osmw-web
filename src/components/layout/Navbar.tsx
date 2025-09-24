@@ -30,11 +30,11 @@ export const Navbar: React.FC = () => {
             <Link href="/guides" className="px-4 py-2 text-cyan-100/90 hover:text-cyan-50 hover:bg-slate-700/50 rounded-xl text-sm font-semibold transition-all duration-300">
               Guides
             </Link>
-            <Link href="/rankings" className="px-4 py-2 text-cyan-100/90 hover:text-cyan-50 hover:bg-slate-700/50 rounded-xl text-sm font-semibold transition-all duration-300">
+            <Link href="/rankings" className="px-4 py-2 text-cyan-100/40 rounded-xl text-sm font-semibold transition-all duration-300 pointer-events-none opacity-50">
               Rankings
             </Link>
             <div className="ml-6 flex items-center gap-3">
-              <Link href="/login" className="px-4 py-2 text-cyan-100/90 hover:text-cyan-50 hover:bg-slate-700/50 rounded-xl text-sm font-semibold transition-all duration-300 border border-cyan-500/30 hover:border-cyan-400/40">
+              <Link href="/login" className="px-4 py-2 text-cyan-100/40 rounded-xl text-sm font-semibold transition-all duration-300 border border-cyan-500/20 pointer-events-none opacity-50">
                 Login
               </Link>
               <Link href="/register" className="px-4 py-2 bg-gradient-to-r from-cyan-500/80 to-teal-500/80 hover:from-cyan-500 hover:to-teal-500 text-white hover:text-cyan-50 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:shadow-cyan-500/30 border border-cyan-400/30">

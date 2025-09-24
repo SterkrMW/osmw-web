@@ -15,26 +15,10 @@ const patchNotes: PatchNote[] = [
     version: SERVER_CONFIG.serverVersion,
     date: "Sep 9, 2025",
     changes: [
-      "",
+      "Beta Begins!",
     ],
     type: "major"
   },
-  {
-    version: "v2.1.7",
-    date: "Sep 9, 2025", 
-    changes: [
-      "",
-    ],
-    type: "hotfix"
-  },
-  {
-    version: "v2.1.6",
-    date: "Sep 9, 2025",
-    changes: [
-      "",
-    ],
-    type: "major"
-  }
 ];
 
 export const PatchNotes: React.FC = () => {
