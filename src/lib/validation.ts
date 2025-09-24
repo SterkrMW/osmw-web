@@ -17,6 +17,11 @@ export function validatePassword(password: string): PasswordValidationResult {
     errors.push('Password must be less than 128 characters');
   }
 
+  // Alphanumeric only check (game client requirement)
+  if (!/^[a-zA-Z0-9]+$/.test(password)) {
+    errors.push('Password can only contain letters and numbers');
+  }
+
   // Uppercase letter check
   if (!/[A-Z]/.test(password)) {
     errors.push('Password must contain at least one uppercase letter');
@@ -86,12 +91,9 @@ export function validateUsername(username: string): PasswordValidationResult {
     errors.push('Username must be less than 20 characters');
   }
 
-  if (!/^[a-zA-Z0-9_-]+$/.test(username)) {
-    errors.push('Username can only contain letters, numbers, hyphens, and underscores');
-  }
-
-  if (/^[_-]|[_-]$/.test(username)) {
-    errors.push('Username cannot start or end with hyphens or underscores');
+  // Alphanumeric only check (game client requirement)
+  if (!/^[a-zA-Z0-9]+$/.test(username)) {
+    errors.push('Username can only contain letters and numbers');
   }
 
   return {
