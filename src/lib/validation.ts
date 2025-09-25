@@ -87,8 +87,8 @@ export function validateUsername(username: string): PasswordValidationResult {
     errors.push('Username must be at least 3 characters long');
   }
 
-  if (username.length > 20) {
-    errors.push('Username must be less than 20 characters');
+  if (username.length > 15) {
+    errors.push('Username must be less than 15 characters');
   }
 
   // Alphanumeric only check (game client requirement)
