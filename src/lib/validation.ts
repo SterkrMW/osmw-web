@@ -87,7 +87,7 @@ export function validateUsername(username: string): PasswordValidationResult {
     errors.push('Username must be at least 3 characters long');
   }
 
-  if (username.length > 15) {
+  if (username.length > 14) {
     errors.push('Username must be less than 15 characters');
   }
 
