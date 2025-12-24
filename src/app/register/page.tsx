@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { GlassCard, GradientButton, FormField, FormInput, BackToHomepage, PageContainer } from '@/components/ui';
+import { GlassCard, GradientButton, FormField, FormInput, PageContainer } from '@/components/ui';
 import { validatePassword, validateEmail, validateUsername } from '@/lib/validation';
 
 export default function RegisterPage() {
@@ -116,18 +115,6 @@ export default function RegisterPage() {
               <p className="text-cyan-100/70 text-sm mb-6">
                 You can now log in with your new account credentials.
               </p>
-              <div className="space-y-3">
-                <Link href="/download">
-                  <GradientButton variant="primary" fullWidth size="lg">
-                    Go to Download
-                  </GradientButton>
-                </Link>
-                <Link href="/">
-                  <GradientButton variant="secondary" fullWidth>
-                    Back to Homepage
-                  </GradientButton>
-                </Link>
-              </div>
             </div>
           ) : (
             <>
@@ -211,14 +198,7 @@ export default function RegisterPage() {
                     required
                   />
                   <label className="text-sm text-cyan-100/90">
-                    I accept the{' '}
-                    <Link href="/terms" target="_blank" className="text-cyan-300 hover:text-cyan-200 underline">
-                      Terms of Service
-                    </Link>
-                    {' '}and{' '}
-                    <Link href="/privacy" target="_blank" className="text-cyan-300 hover:text-cyan-200 underline">
-                      Privacy Policy
-                    </Link>
+                    I accept the Terms of Service and Privacy Policy
                   </label>
                 </div>
               </div>
@@ -233,24 +213,9 @@ export default function RegisterPage() {
                   {isLoading ? 'Creating Account...' : 'Create Account'}
                 </GradientButton>
               </form>
-
-              <div className="mt-6 pt-4 border-t border-cyan-500/20 text-center">
-                <p className="text-cyan-100/70 text-sm mb-3">
-                  Already have an account?
-                </p>
-                <Link href="/login">
-                  <GradientButton variant="secondary" fullWidth>
-                    Login to Existing Account
-                  </GradientButton>
-                </Link>
-              </div>
             </>
           )}
         </GlassCard>
-
-        <div className="mt-4 text-center">
-          <BackToHomepage />
-        </div>
       </div>
     </PageContainer>
   );
