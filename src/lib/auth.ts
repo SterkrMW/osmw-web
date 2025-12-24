@@ -82,7 +82,7 @@ export const authOptions: NextAuthOptions = {
         session.user.gender = token.gender as string;
         session.user.level = token.level as number;
         if (token.discordId) {
-          (session as any).discordId = token.discordId;
+          session.discordId = token.discordId;
         }
       }
       return session;

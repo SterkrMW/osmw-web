@@ -8,14 +8,14 @@ export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     
-    if (!session || !(session as any).discordId) {
+    if (!session || !session.discordId) {
       return NextResponse.json(
         { error: 'Discord authentication required. Please authenticate with Discord first.' },
         { status: 401 }
       );
     }
 
-    const discordId = (session as any).discordId;
+    const discordId = session.discordId;
     const { username, email, password } = await request.json();
 
     if (!username || !email || !password) {

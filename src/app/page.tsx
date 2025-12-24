@@ -20,7 +20,7 @@ export default function RegisterPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscordLoading, setIsDiscordLoading] = useState(false);
 
-  const hasDiscordAuth = session && (session as any).discordId;
+  const hasDiscordAuth = session && session.discordId;
 
 
   const handleDiscordLogin = async () => {

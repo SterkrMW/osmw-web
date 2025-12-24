@@ -1,4 +1,5 @@
-import NextAuth from 'next-auth';
+import 'next-auth';
+import 'next-auth/jwt';
 
 declare module 'next-auth' {
   interface User {
@@ -21,6 +22,7 @@ declare module 'next-auth' {
       gender?: string;
       level?: number;
     };
+    discordId?: string;
   }
 }
 
