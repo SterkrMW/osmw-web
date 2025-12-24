@@ -1,14 +1,52 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import { GlassCard, GradientButton, FormField, FormInput, PageContainer } from '@/components/ui';
 import { validatePassword, validateEmail, validateUsername } from '@/lib/validation';
 
-export default function RegisterPage() {
-  const { data: session, status } = useSession();
+function ErrorHandler({ setError }: { setError: (error: string) => void }) {
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const errorParam = searchParams.get('error');
+    if (errorParam === 'OAuthSignin') {
+      setError('Discord authentication failed. Please check that Discord Client ID and Secret are configured correctly, and that the redirect URI matches your Discord app settings.');
+    } else if (errorParam === 'OAuthCallback') {
+      setError('Discord callback error. Please try again.');
+    } else if (errorParam === 'OAuthCreateAccount') {
+      setError('Failed to create Discord session. Please try again.');
+    } else if (errorParam === 'Configuration') {
+      setError('Discord OAuth configuration error. Please check your environment variables.');
+    }
+  }, [searchParams, setError]);
+
+  return null;
+}
+
+function OAuthErrorTroubleshooting() {
+  const searchParams = useSearchParams();
+  const errorParam = searchParams.get('error');
+  
+  if (errorParam !== 'OAuthSignin') {
+    return null;
+  }
+
+  return (
+    <div className="p-3 bg-yellow-900/50 border border-yellow-400/50 rounded text-yellow-200 text-xs text-left space-y-2">
+      <p className="font-semibold">Troubleshooting OAuth Error:</p>
+      <ul className="list-disc list-inside space-y-1 ml-2">
+        <li>Verify DISCORD_CLIENT_ID and DISCORD_CLIENT_SECRET are set in your environment variables</li>
+        <li>Check that your Discord app redirect URI matches: <code className="bg-slate-800 px-1 rounded">{typeof window !== 'undefined' ? window.location.origin : ''}/api/auth/callback/discord</code></li>
+        <li>Ensure your Discord application is properly configured in the Discord Developer Portal</li>
+      </ul>
+    </div>
+  );
+}
+
+function RegisterPageContent() {
+  const { data: session, status } = useSession();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -23,19 +61,6 @@ export default function RegisterPage() {
   const [isDiscordLoading, setIsDiscordLoading] = useState(false);
 
   const hasDiscordAuth = session && session.discordId;
-
-  useEffect(() => {
-    const errorParam = searchParams.get('error');
-    if (errorParam === 'OAuthSignin') {
-      setError('Discord authentication failed. Please check that Discord Client ID and Secret are configured correctly, and that the redirect URI matches your Discord app settings.');
-    } else if (errorParam === 'OAuthCallback') {
-      setError('Discord callback error. Please try again.');
-    } else if (errorParam === 'OAuthCreateAccount') {
-      setError('Failed to create Discord session. Please try again.');
-    } else if (errorParam === 'Configuration') {
-      setError('Discord OAuth configuration error. Please check your environment variables.');
-    }
-  }, [searchParams]);
 
 
   const handleDiscordLogin = async () => {
@@ -180,16 +205,10 @@ export default function RegisterPage() {
                   {error}
                 </div>
               )}
-              {searchParams.get('error') === 'OAuthSignin' && (
-                <div className="p-3 bg-yellow-900/50 border border-yellow-400/50 rounded text-yellow-200 text-xs text-left space-y-2">
-                  <p className="font-semibold">Troubleshooting OAuth Error:</p>
-                  <ul className="list-disc list-inside space-y-1 ml-2">
-                    <li>Verify DISCORD_CLIENT_ID and DISCORD_CLIENT_SECRET are set in your environment variables</li>
-                    <li>Check that your Discord app redirect URI matches: <code className="bg-slate-800 px-1 rounded">{typeof window !== 'undefined' ? window.location.origin : ''}/api/auth/callback/discord</code></li>
-                    <li>Ensure your Discord application is properly configured in the Discord Developer Portal</li>
-                  </ul>
-                </div>
-              )}
+              <Suspense fallback={null}>
+                <ErrorHandler setError={setError} />
+                <OAuthErrorTroubleshooting />
+              </Suspense>
               <GradientButton
                 onClick={handleDiscordLogin}
                 disabled={isDiscordLoading}
@@ -312,5 +331,27 @@ export default function RegisterPage() {
         </GlassCard>
       </div>
     </PageContainer>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={
+      <PageContainer maxWidth="2xl" centerContent>
+        <div className="w-full">
+          <GlassCard 
+            title="Loading..."
+            headerClassName="text-center"
+            contentClassName="p-6"
+          >
+            <div className="text-center">
+              <p className="text-cyan-100/90">Please wait...</p>
+            </div>
+          </GlassCard>
+        </div>
+      </PageContainer>
+    }>
+      <RegisterPageContent />
+    </Suspense>
   );
 }
