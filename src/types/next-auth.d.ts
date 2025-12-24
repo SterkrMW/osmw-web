@@ -31,5 +31,6 @@ declare module 'next-auth/jwt' {
     race?: string;
     gender?: string;
     level?: number;
+    discordId?: string;
   }
 }

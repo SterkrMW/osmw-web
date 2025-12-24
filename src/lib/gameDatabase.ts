@@ -17,6 +17,7 @@ interface User {
   race?: string;
   gender?: string;
   level?: number;
+  discordId?: string;
 }
 
 // Security: Only allow access to the User collection
@@ -50,14 +51,15 @@ export async function getCollection(collectionName: string): Promise<Collection>
   return database.collection(collectionName);
 }
 
-export async function createUser(username: string, email: string, password: string): Promise<void> {
+export async function createUser(username: string, email: string, password: string, discordId?: string): Promise<void> {
   const usersCollection = await getUserCollection();
   
   // Check if user already exists
   const existingUser = await usersCollection.findOne({
     $or: [
       { username: username.toLowerCase() },
-      { email: email }
+      { email: email },
+      ...(discordId ? [{ discordId: discordId }] : [])
     ]
   });
   
@@ -67,6 +69,9 @@ export async function createUser(username: string, email: string, password: stri
     }
     if (existingUser.email === email) {
       throw new Error('Email already exists');
+    }
+    if (discordId && existingUser.discordId === discordId) {
+      throw new Error('Discord account already registered');
     }
   }
   
@@ -83,6 +88,7 @@ export async function createUser(username: string, email: string, password: stri
     password: hashedPassword,
     characters: [],
     isAdmin: false,
+    ...(discordId ? { discordId: discordId } : {})
   };
   
   await usersCollection.insertOne(userDoc);

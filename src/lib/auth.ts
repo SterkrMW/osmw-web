@@ -1,5 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import DiscordProvider from 'next-auth/providers/discord';
 import { getUserCollection } from '@/lib/gameDatabase';
 import bcrypt from 'bcryptjs';
 import { databaseConfig } from '@/config/database';
@@ -7,6 +8,10 @@ import crypto from 'crypto';
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+    }),
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -55,13 +60,16 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.username = user.username;
         token.characterName = user.characterName;
         token.race = user.race;
         token.gender = user.gender;
         token.level = user.level;
+      }
+      if (account?.provider === 'discord' && account.providerAccountId) {
+        token.discordId = account.providerAccountId;
       }
       return token;
     },
@@ -73,6 +81,9 @@ export const authOptions: NextAuthOptions = {
         session.user.race = token.race as string;
         session.user.gender = token.gender as string;
         session.user.level = token.level as number;
+        if (token.discordId) {
+          (session as any).discordId = token.discordId;
+        }
       }
       return session;
     }

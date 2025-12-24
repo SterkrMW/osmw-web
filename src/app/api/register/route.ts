@@ -1,9 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { createUser } from '@/lib/gameDatabase';
 import { validatePassword, validateEmail, validateUsername } from '@/lib/validation';
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session || !(session as any).discordId) {
+      return NextResponse.json(
+        { error: 'Discord authentication required. Please authenticate with Discord first.' },
+        { status: 401 }
+      );
+    }
+
+    const discordId = (session as any).discordId;
     const { username, email, password } = await request.json();
 
     if (!username || !email || !password) {
@@ -37,8 +49,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create user in game server database
-    await createUser(username, email, password);
+    // Create user in game server database with Discord ID
+    await createUser(username, email, password, discordId);
 
     return NextResponse.json(
       { message: 'User created successfully' },
@@ -49,7 +61,9 @@ export async function POST(request: NextRequest) {
     
     // Handle specific error messages
     if (error instanceof Error) {
-      if (error.message === 'Username already exists' || error.message === 'Email already exists') {
+      if (error.message === 'Username already exists' || 
+          error.message === 'Email already exists' ||
+          error.message === 'Discord account already registered') {
         return NextResponse.json(
           { error: error.message },
           { status: 400 }
