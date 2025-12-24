@@ -67,7 +67,7 @@ function RegisterPageContent() {
     setIsDiscordLoading(true);
     setError('');
     try {
-      await signIn('discord', { callbackUrl: window.location.href });
+      await signIn('discord', { callbackUrl: window.location.origin + '/' });
     } catch (error) {
       console.error('Discord login error:', error);
       setError('Failed to connect with Discord. Please try again.');
