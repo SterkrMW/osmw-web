@@ -13,7 +13,7 @@ export function validatePassword(password: string): PasswordValidationResult {
   }
 
   // Maximum length check (prevent DoS attacks)
-  if (password.length > 15) {
+  if (password.length > 14) {
     errors.push('Password must be less than 15 characters');
   }
 

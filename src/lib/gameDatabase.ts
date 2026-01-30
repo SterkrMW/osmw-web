@@ -20,8 +20,8 @@ interface User {
   discordId?: string;
 }
 
-// Security: Only allow access to the User collection
-const ALLOWED_COLLECTIONS = ['User'];
+// Security: Only allow access to specific collections
+const ALLOWED_COLLECTIONS = ['User', 'PasswordResetToken'];
 
 export async function getDatabase(): Promise<Db> {
   if (!db) {
@@ -92,6 +92,37 @@ export async function createUser(username: string, email: string, password: stri
   };
   
   await usersCollection.insertOne(userDoc);
+}
+
+/**
+ * Find a user by their email address
+ */
+export async function getUserByEmail(email: string): Promise<User | null> {
+  const usersCollection = await getUserCollection();
+  
+  return usersCollection.findOne({ email: email });
+}
+
+/**
+ * Update a user's password
+ * Uses the same hashing method as createUser for consistency with game server
+ */
+export async function updateUserPassword(userId: string, newPassword: string): Promise<void> {
+  const usersCollection = await getUserCollection();
+  
+  // Hash the password using the same method as the game server
+  const md5Password = crypto.createHash('md5').update(newPassword).digest('hex');
+  const processedPassword = md5Password.toLowerCase() + databaseConfig.security.globalSalt;
+  const hashedPassword = await bcrypt.hash(processedPassword, 10);
+  
+  const result = await usersCollection.updateOne(
+    { _id: userId },
+    { $set: { password: hashedPassword } }
+  );
+  
+  if (result.matchedCount === 0) {
+    throw new Error('User not found');
+  }
 }
 
 export async function closeConnection(): Promise<void> {
