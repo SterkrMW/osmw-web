@@ -53,13 +53,18 @@ export async function sendEmail(options: SendEmailOptions): Promise<void> {
   const config = getEmailConfig();
   const transporter = createTransporter();
 
-  await transporter.sendMail({
+  console.log(`[Email] Attempting to send email to: ${options.to}, subject: ${options.subject}`);
+  console.log(`[Email] Using SMTP: ${config.host}:${config.port}`);
+  
+  const result = await transporter.sendMail({
     from: config.from,
     to: options.to,
     subject: options.subject,
     text: options.text,
     html: options.html,
   });
+  
+  console.log(`[Email] Email sent successfully. MessageId: ${result.messageId}`);
 }
 
 export async function sendPasswordResetEmail(email: string, resetToken: string): Promise<void> {

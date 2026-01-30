@@ -31,22 +31,29 @@ export async function POST(request: NextRequest) {
     );
 
     // Look up user by email
+    console.log(`[ForgotPassword] Looking up user by email: ${email}`);
     const user = await getUserByEmail(email);
     
     if (!user) {
       // Don't reveal that the email doesn't exist
+      console.log(`[ForgotPassword] No user found with email: ${email}`);
       return successResponse;
     }
+    
+    console.log(`[ForgotPassword] User found: ${user._id}`);
 
     try {
       // Create password reset token
+      console.log(`[ForgotPassword] Creating reset token for user: ${user._id}`);
       const token = await createPasswordResetToken(user._id, email);
 
       // Send the reset email
+      console.log(`[ForgotPassword] Sending reset email to: ${email}`);
       await sendPasswordResetEmail(email, token);
+      console.log(`[ForgotPassword] Email sent successfully to: ${email}`);
     } catch (error) {
       // Log the error but don't reveal it to the user
-      console.error('Failed to process password reset:', error);
+      console.error('[ForgotPassword] Failed to process password reset:', error);
       
       // Check if it's a rate limit error - we can reveal this
       if (error instanceof Error && error.message.includes('Too many password reset requests')) {

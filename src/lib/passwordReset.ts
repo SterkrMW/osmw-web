@@ -61,15 +61,21 @@ export async function checkRateLimit(email: string): Promise<boolean> {
  */
 export async function createPasswordResetToken(userId: string, email: string): Promise<string> {
   const collection = await getPasswordResetTokenCollection();
+  const normalizedEmail = email.toLowerCase();
   
-  // Check rate limit
-  const withinLimit = await checkRateLimit(email);
+  // Check rate limit BEFORE any deletions
+  const withinLimit = await checkRateLimit(normalizedEmail);
   if (!withinLimit) {
+    console.log(`[PasswordReset] Rate limit exceeded for email: ${normalizedEmail}`);
     throw new Error('Too many password reset requests. Please try again later.');
   }
   
-  // Delete any existing tokens for this user
-  await collection.deleteMany({ userId });
+  // Only invalidate the most recent token for this user (not delete - keep for rate limiting)
+  // We'll mark old tokens as expired instead of deleting them
+  await collection.updateMany(
+    { userId, expiresAt: { $gt: new Date() } },
+    { $set: { expiresAt: new Date() } } // Expire immediately
+  );
   
   // Generate new token
   const { token, tokenHash } = generateResetToken();
@@ -78,12 +84,13 @@ export async function createPasswordResetToken(userId: string, email: string): P
   const tokenDoc: PasswordResetToken = {
     _id: tokenHash,
     userId,
-    email: email.toLowerCase(),
+    email: normalizedEmail,
     expiresAt: new Date(Date.now() + TOKEN_EXPIRY_HOURS * 60 * 60 * 1000),
     createdAt: new Date(),
   };
   
   await collection.insertOne(tokenDoc);
+  console.log(`[PasswordReset] Token created for user: ${userId}, email: ${normalizedEmail}`);
   
   // Return the raw token to send to user
   return token;
