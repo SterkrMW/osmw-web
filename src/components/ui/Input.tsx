@@ -20,7 +20,7 @@ export default function Input({
       ${error 
         ? 'border-status-error focus:ring-2 focus:ring-status-error focus:border-status-error' 
         : 'border-gray-300 dark:border-border focus:ring-2 focus:ring-accent-primary focus:border-accent-primary'}`,
-    dark: `bg-background-tertiary/80 text-foreground-primary placeholder-foreground-secondary/70
+    dark: `bg-background-tertiary text-foreground-primary placeholder-foreground-secondary
       ${error
         ? 'border border-status-error focus:border-status-error'
         : 'border border-border focus:border-accent-primary focus:outline-accent-primary'}`
