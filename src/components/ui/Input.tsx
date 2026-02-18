@@ -13,17 +13,17 @@ export default function Input({
   className = '',
   ...props
 }: InputProps) {
-  const baseStyles = 'w-full px-3 py-2 rounded-lg transition-colors duration-200 focus:outline-none';
+  const baseStyles = 'w-full px-3 py-2 rounded transition-colors duration-200 focus:outline-none';
   
   const variantStyles = {
-    default: `border shadow-sm bg-white/90 dark:bg-gray-800/90 dark:text-white
+    default: `border shadow-sm bg-white/90 dark:bg-background-tertiary text-foreground-primary
       ${error 
-        ? 'border-red-300 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
-        : 'border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-amber-500 focus:border-amber-500'}`,
-    dark: `bg-slate-800/50 text-cyan-100 placeholder-cyan-300/50
+        ? 'border-status-error focus:ring-2 focus:ring-status-error focus:border-status-error' 
+        : 'border-gray-300 dark:border-border focus:ring-2 focus:ring-accent-primary focus:border-accent-primary'}`,
+    dark: `bg-background-tertiary/80 text-foreground-primary placeholder-foreground-secondary/70
       ${error
-        ? 'border border-red-500/50 focus:border-red-400'
-        : 'border border-cyan-500/30 focus:border-cyan-400'}`
+        ? 'border border-status-error focus:border-status-error'
+        : 'border border-border focus:border-accent-primary focus:outline-accent-primary'}`
   };
 
   const inputElement = (
@@ -41,7 +41,7 @@ export default function Input({
     <div className="space-y-1">
       {label && (
         <label className={`block text-sm font-medium ${
-          variant === 'default' ? 'text-gray-700 dark:text-gray-300' : 'text-cyan-200'
+          variant === 'default' ? 'text-gray-700 dark:text-foreground-primary' : 'text-foreground-accent'
         }`}>
           {label}
         </label>
@@ -49,7 +49,7 @@ export default function Input({
       {inputElement}
       {typeof error === 'string' && error && (
         <p className={`text-sm ${
-          variant === 'default' ? 'text-red-600 dark:text-red-400' : 'text-red-400'
+          variant === 'default' ? 'text-red-600 dark:text-status-error' : 'text-status-error'
         }`}>
           {error}
         </p>

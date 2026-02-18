@@ -18,13 +18,13 @@ export default function InteractiveRow({
   const baseClasses = "group rounded-lg transition-all duration-300";
   
   const variantClasses = {
-    default: "bg-gradient-to-r from-slate-700/40 to-slate-600/20 p-3 border border-cyan-500/20",
-    compact: "bg-gradient-to-r from-slate-700/40 to-slate-600/20 p-2 border border-cyan-500/20",
-    bordered: "bg-gradient-to-r from-slate-700/40 to-slate-600/20 p-4 border border-cyan-500/20"
+    default: "bg-gradient-to-r from-background-tertiary/80 to-background-secondary/60 p-3 border border-border",
+    compact: "bg-gradient-to-r from-background-tertiary/80 to-background-secondary/60 p-2 border border-border",
+    bordered: "bg-gradient-to-r from-background-tertiary/80 to-background-secondary/60 p-4 border border-border"
   };
   
   const hoverClasses = hover 
-    ? "hover:border-cyan-400/40 hover:bg-gradient-to-r hover:from-slate-700/60 hover:to-slate-600/40 hover:scale-[1.01] hover:shadow-lg cursor-pointer" 
+    ? "hover:border-accent-primary hover:from-background-tertiary hover:to-background-secondary hover:scale-[1.01] hover:shadow-lg cursor-pointer" 
     : "";
     
   const clickableClasses = onClick ? "cursor-pointer" : "";

@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Shared color scheme with gw-broadcaster (App.css) */
+:root {
+  /* Background colors - dark charcoal/teal */
+  --bg-primary: #1a2a2a;
+  --bg-secondary: #263535;
+  --bg-tertiary: #2d4040;
+  --bg-card: rgba(38, 53, 53, 0.95);
+
+  /* Accent colors - cyan/teal */
+  --accent-primary: #00bcd4;
+  --accent-secondary: #26c6da;
+  --accent-glow: rgba(0, 188, 212, 0.3);
+
+  /* Text colors */
+  --text-primary: #e0e6e6;
+  --text-secondary: #8b9a9a;
+  --text-accent: #00bcd4;
+
+  /* Team colors */
+  --red-team: #ef4444;
+  --red-team-glow: rgba(239, 68, 68, 0.25);
+  --blue-team: #3b82f6;
+  --blue-team-glow: rgba(59, 130, 246, 0.25);
+
+  /* Status colors */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  /* UI */
+  --border-color: rgba(0, 188, 212, 0.3);
+  --border-radius: 8px;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
@@ -13,8 +48,8 @@
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px var(--accent-glow); }
+  50% { box-shadow: 0 0 30px rgba(0, 188, 212, 0.5); }
 }
 
 .animate-shimmer {
@@ -49,4 +84,5 @@ body {
   width: 100%;
   position: relative;
   min-height: 100vh;
+  color: var(--text-primary);
 }

@@ -30,9 +30,9 @@ export default function Card({
       relative overflow-hidden
       before:absolute before:inset-0 before:bg-gradient-to-br 
       before:from-amber-100/50 before:to-transparent before:pointer-events-none`,
-    dark: `bg-gradient-to-br from-gray-800/90 to-gray-900/90 
-      border border-gray-700 text-white hover:shadow-2xl hover:shadow-blue-500/20`,
-    glass: 'relative bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-xl border border-cyan-400/30 shadow-2xl'
+    dark: `bg-gradient-to-br from-background-secondary to-background-tertiary 
+      border border-border text-foreground-primary hover:shadow-2xl hover:shadow-accent-glow`,
+    glass: 'relative bg-gradient-to-br from-background-secondary to-background-tertiary backdrop-blur-xl border border-border shadow-card'
   };
 
   const isCompact = size === 'compact';
@@ -42,16 +42,16 @@ export default function Card({
     <div className={`${baseStyles} ${variantStyles[variant]} ${className}`} {...props}>
       {/* Glass card gradient overlay */}
       {isGlass && (
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 via-transparent to-cyan-400/5 rounded pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/5 via-transparent to-accent-primary/5 rounded pointer-events-none"></div>
       )}
       
       {/* Header section */}
       {title && (
         <div className={`relative ${isCompact ? 'p-4' : 'p-5'} border-b ${
-          isGlass ? 'border-cyan-400/20 bg-gradient-to-r from-cyan-500/10 to-teal-400/8' : 'border-gray-200 dark:border-gray-700'
+          isGlass ? 'border-border bg-gradient-to-r from-accent-primary/10 to-accent-secondary/8' : 'border-gray-200 dark:border-gray-700'
         } ${headerClassName}`}>
           <h2 className={`${isCompact ? 'text-lg' : 'text-xl'} font-bold ${
-            isGlass ? 'bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent' : ''
+            isGlass ? 'bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent' : ''
           } flex items-center gap-2`}>
             {icon && <span>{icon}</span>}
             {title}

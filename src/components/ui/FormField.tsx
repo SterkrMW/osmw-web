@@ -19,13 +19,13 @@ export default function FormField({
 }: FormFieldProps) {
   return (
     <div className={className}>
-      <label className={`block text-cyan-300 text-sm font-semibold mb-2 ${labelClassName}`}>
+      <label className={`block text-foreground-accent text-sm font-semibold mb-2 ${labelClassName}`}>
         {label}
-        {required && <span className="text-red-400 ml-1">*</span>}
+        {required && <span className="text-status-error ml-1">*</span>}
       </label>
       {children}
       {error && (
-        <p className="mt-2 text-sm text-red-400">
+        <p className="mt-2 text-sm text-status-error">
           {error}
         </p>
       )}

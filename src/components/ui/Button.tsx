@@ -25,13 +25,12 @@ export default function Button({
   `;
 
   const variantStyles = {
-    // Original GradientButton variants - matching site theme
-    primary: 'bg-gradient-to-r from-cyan-500/80 to-teal-600/80 hover:from-cyan-500 hover:to-teal-600 text-white',
-    secondary: 'bg-gradient-to-r from-slate-700/40 to-slate-600/20 hover:from-slate-700/60 hover:to-slate-600/40 text-cyan-100 border border-cyan-500/20 hover:border-cyan-400/40',
-    outline: 'bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10',
+    // Site theme (synced with App.css)
+    primary: 'bg-gradient-to-r from-accent-primary to-accent-secondary hover:opacity-90 text-white',
+    secondary: 'bg-gradient-to-r from-background-tertiary/80 to-background-secondary/60 hover:from-background-tertiary hover:to-background-secondary text-foreground-primary border border-border hover:border-accent-primary',
+    outline: 'bg-transparent border-2 border-accent-primary text-accent-primary hover:bg-accent-primary/10',
     
-    // Original Button variants
-    danger: 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white border-2 border-red-500',
+    danger: 'bg-gradient-to-r from-status-error to-red-700 hover:opacity-90 text-white border-2 border-status-error',
     fantasy: `bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 
       hover:from-amber-700 hover:via-amber-800 hover:to-amber-900
       text-amber-100 border-2 border-amber-500 font-bold tracking-wide
@@ -40,9 +39,8 @@ export default function Button({
       before:translate-x-[-100%] hover:before:translate-x-[100%] 
       before:transition-transform before:duration-700`,
     
-    // Additional gradient variants for site theme
     'gradient-purple': 'bg-gradient-to-r from-purple-500/80 to-purple-600/80 hover:from-purple-500 hover:to-purple-600 text-white',
-    'gradient-cyan': 'bg-gradient-to-r from-cyan-500/80 to-teal-600/80 hover:from-cyan-500 hover:to-teal-600 text-white'
+    'gradient-cyan': 'bg-gradient-to-r from-accent-primary to-accent-secondary hover:opacity-90 text-white'
   };
 
   const sizeStyles = {
