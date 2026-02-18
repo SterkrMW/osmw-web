@@ -17,7 +17,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles = `
-    font-bold rounded-xl transition-all duration-300 
+    font-bold rounded transition-all duration-300 
     shadow-lg hover:shadow-xl hover:scale-105
     disabled:opacity-50 disabled:cursor-not-allowed 
     disabled:hover:scale-100 relative overflow-hidden

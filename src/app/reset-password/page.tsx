@@ -126,7 +126,7 @@ function ResetPasswordForm() {
           </p>
           <Link 
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500/80 to-teal-600/80 hover:from-cyan-500 hover:to-teal-600 text-white font-bold rounded-xl transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500/80 to-teal-600/80 hover:from-cyan-500 hover:to-teal-600 text-white font-bold rounded transition-all duration-300"
           >
             Go to Login
           </Link>

@@ -21,7 +21,7 @@ export default function Card({
   children,
   ...props
 }: CardProps) {
-  const baseStyles = 'rounded-xl shadow-lg transition-all duration-300 overflow-hidden';
+  const baseStyles = 'rounded shadow-lg transition-all duration-300 overflow-hidden';
   
   const variantStyles = {
     default: 'bg-white/90 border border-gray-200 hover:shadow-xl',
@@ -42,7 +42,7 @@ export default function Card({
     <div className={`${baseStyles} ${variantStyles[variant]} ${className}`} {...props}>
       {/* Glass card gradient overlay */}
       {isGlass && (
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 via-transparent to-cyan-400/5 rounded-xl pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 via-transparent to-cyan-400/5 rounded pointer-events-none"></div>
       )}
       
       {/* Header section */}

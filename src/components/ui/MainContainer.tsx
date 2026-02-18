@@ -19,7 +19,7 @@ export default function MainContainer({
   
   const variantClasses = {
     default: "",
-    compact: "rounded-xl",
+    compact: "rounded",
     fullHeight: "h-full"
   };
   
